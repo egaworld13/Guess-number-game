@@ -1,14 +1,14 @@
 'use strict';
 
 let randNumber = Math.trunc(Math.random() * 20) + 1;
-let score = 20;
+let score = 5;
 let highScore = 0;
 const defaultHighScore = document.querySelector('.highscore').textContent;
 
 //RESET GAME, HIGH SCORE STATS
 function again() {
   randNumber = Math.trunc(Math.random() * 20) + 1;
-  score = 20;
+  score = 5;
   document.querySelector('.score').textContent = score;
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.fontSize = '6rem';
@@ -36,10 +36,10 @@ function compaereNumber() {
       highScore = score;
       document.querySelector('.highscore').textContent = highScore;
     }
+  }
 
-    //IF NUMBER IS HIGHER THAN RANDOM
-  } else if (inputNumber > randNumber) {
-    //IF SCORE IS 0
+  //IF NUMBER IS HIGHER OR LOWER
+  else if (inputNumber !== randNumber) {
     if (score === 1) {
       document.querySelector('.score').textContent = 0;
       document.querySelector('.message').textContent = '☃️ You lost';
@@ -47,20 +47,8 @@ function compaereNumber() {
     } else {
       score--;
       document.querySelector('.score').textContent = score;
-      document.querySelector('.message').textContent = '⬆️To High';
-    }
-
-    //IF NUMBER IS LOWER THAN RANDOM
-  } else if (inputNumber < randNumber) {
-    //IF SCORE IS 0
-    if (score === 1) {
-      document.querySelector('.score').textContent = 0;
-      document.querySelector('.message').textContent = '☃️ You lost';
-      document.querySelector('body').style.backgroundColor = '#990000';
-    } else {
-      score--;
-      document.querySelector('.score').textContent = score;
-      document.querySelector('.message').textContent = '⬇️To Low';
+      document.querySelector('.message').textContent =
+        inputNumber > randNumber ? '⬆️To High' : '⬇️To Low';
     }
   }
 }
