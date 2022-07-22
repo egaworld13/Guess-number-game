@@ -5,7 +5,7 @@ let score = 20;
 let highScore = 0;
 const defaultHighScore = document.querySelector('.highscore').textContent;
 
-//RESET GAME, HIGH SCORE STAYS
+//RESET GAME, HIGH SCORE STATS
 function again() {
   randNumber = Math.trunc(Math.random() * 20) + 1;
   score = 20;
@@ -14,10 +14,8 @@ function again() {
   document.querySelector('.number').style.fontSize = '6rem';
   document.querySelector('.number').style.width = '15rem';
   document.querySelector('.message').textContent = `Start guessing...`;
-  //FOR TEST
-  document.querySelector('.number').textContent = randNumber;
 }
-
+//COMPARE INPUT NR AND RAND NR FUNC.
 function compaereNumber() {
   const inputNumber = Number(document.querySelector('.guess').value);
   // NO INPUT NUMBER
@@ -64,7 +62,6 @@ function compaereNumber() {
     }
   }
 }
-
-//FOR TEST
+//CHECK AND AGAIN BTN FUNCTION CALL(LISTENERS)
 document.querySelector('.check').addEventListener('click', compaereNumber);
 document.querySelector('.again').addEventListener('click', again);
