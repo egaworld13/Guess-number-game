@@ -14,6 +14,8 @@ function again() {
   document.querySelector('.number').style.fontSize = '6rem';
   document.querySelector('.number').style.width = '15rem';
   document.querySelector('.message').textContent = `Start guessing...`;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
 }
 //COMPARE INPUT NR AND RAND NR FUNC.
 function compaereNumber() {
@@ -28,7 +30,7 @@ function compaereNumber() {
     document.querySelector('body').style.backgroundColor = '#006600';
     document.querySelector('.number').style.width = '30rem';
     document.querySelector('.number').style.fontSize = '7rem';
-
+    document.querySelector('.number').textContent = inputNumber;
     //UPDATE HIGH SCORE IF ITS HIGHER
     if (highScore < score) {
       highScore = score;
