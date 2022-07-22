@@ -5,7 +5,20 @@ let score = 20;
 let highScore = 0;
 const defaultHighScore = document.querySelector('.highscore').textContent;
 
-document.querySelector('.check').addEventListener('click', function () {
+//RESET GAME, HIGH SCORE STAYS
+function again() {
+  randNumber = Math.trunc(Math.random() * 20) + 1;
+  score = 20;
+  document.querySelector('.score').textContent = score;
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.fontSize = '6rem';
+  document.querySelector('.number').style.width = '15rem';
+  document.querySelector('.message').textContent = `Start guessing...`;
+  //FOR TEST
+  document.querySelector('.number').textContent = randNumber;
+}
+
+function compaereNumber() {
   const inputNumber = Number(document.querySelector('.guess').value);
   // NO INPUT NUMBER
   if (!inputNumber) {
@@ -26,37 +39,32 @@ document.querySelector('.check').addEventListener('click', function () {
 
     //IF NUMBER IS HIGHER THAN RANDOM
   } else if (inputNumber > randNumber) {
-    document.querySelector('.score').textContent = score;
-    document.querySelector('.message').textContent = '⬆️To High';
     //IF SCORE IS 0
-
-    if (score <= 0) {
+    if (score === 1) {
+      document.querySelector('.score').textContent = 0;
       document.querySelector('.message').textContent = '☃️ You lost';
       document.querySelector('body').style.backgroundColor = '#990000';
     } else {
       score--;
+      document.querySelector('.score').textContent = score;
+      document.querySelector('.message').textContent = '⬆️To High';
     }
 
     //IF NUMBER IS LOWER THAN RANDOM
   } else if (inputNumber < randNumber) {
-    document.querySelector('.score').textContent = score;
-    document.querySelector('.message').textContent = '⬇️To Low';
-
     //IF SCORE IS 0
-    if (score <= 0) {
-      document.querySelector('.message').textContent = '❌ You lost';
+    if (score === 1) {
+      document.querySelector('.score').textContent = 0;
+      document.querySelector('.message').textContent = '☃️ You lost';
       document.querySelector('body').style.backgroundColor = '#990000';
     } else {
       score--;
+      document.querySelector('.score').textContent = score;
+      document.querySelector('.message').textContent = '⬇️To Low';
     }
   }
-});
-//RESET GAME, HIGH SCORE STAYS
-document.querySelector('.again').addEventListener('click', function () {
-  randNumber = Math.trunc(Math.random() * 20) + 1;
-  score = 20;
-  document.querySelector('.score').textContent = score;
-  document.querySelector('body').style.backgroundColor = '#222';
-  document.querySelector('.number').style.fontSize = '6rem';
-  document.querySelector('.message').textContent = 'Start guessing...';
-});
+}
+
+//FOR TEST
+document.querySelector('.check').addEventListener('click', compaereNumber);
+document.querySelector('.again').addEventListener('click', again);
