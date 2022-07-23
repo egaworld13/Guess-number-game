@@ -23,8 +23,7 @@ function again() {
   message('.score', score);
   message('.message', 'Start guessing');
   message('.number', '?');
-  styleValue('body', '.style.backgroundColor', '#222');
-  // document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.fontSize = '6rem';
   document.querySelector('.number').style.width = '15rem';
   document.querySelector('.guess').value = '';
